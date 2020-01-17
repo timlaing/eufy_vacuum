@@ -1,0 +1,8 @@
+{
+    "domain": "eufy_robovac",
+    "name": "Integration to Eufy Vacuum",
+    "documentation": "https://github.com/shopeonarope/eufy_robovac",
+    "dependencies": [],
+    "codeowners": ["@shopeonarope"],
+    "requirements": ["cryptography"]
+  }
