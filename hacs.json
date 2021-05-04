@@ -1,0 +1,5 @@
+{
+  "name": "Integration for Eufy Vacuums",
+  "domains": "eufy_vacuum",
+  "iot_class": "local_polling"
+}
