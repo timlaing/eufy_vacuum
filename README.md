@@ -1,6 +1,6 @@
 # Eufy Robovac control for Python
 
-Work in progress!
+Work in progress! This is a fork of a fork. 
 
 ## Installation
 Pre-requisites:
@@ -12,6 +12,7 @@ cd eufy_robovac
 python3 -m venv .
 bin/pip install -e .
 ```
+Or see futher below...
 
 ## Demo usage
 ```
@@ -31,8 +32,10 @@ The demo:
 
 **EXPERIMENTAL!**
 
-Copy the contents of the `eufy_robovac` folder to `custom_components/eufy_vacuum` in your home assistant configuration directory. Then add the following to your configuration file:
+## Using HACS
+In HACS add this repo as an additional repository. I'm currently working on making it appear automatically. Install it. 
 
+Add the following to your configuration.yaml
 ```
 eufy_vacuum:
   devices:
@@ -42,3 +45,10 @@ eufy_vacuum:
     id: YOUR DEVICE ID HERE
     type: T2118
 ```
+It looks like you need an older version of the EufyHome app to be able to get the LOCAL KEY and DEVICE ID. 
+
+Restart HA.
+
+## Using Manual Process
+
+Clone/Download the custom_component/eufy_vacuum directory. Add the same lines to your configuration.yaml and restart HA.
