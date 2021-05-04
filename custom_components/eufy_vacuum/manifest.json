@@ -4,5 +4,6 @@
     "documentation": "https://github.com/shopeonarope/eufy_robovac",
     "dependencies": [],
     "codeowners": ["@shopeonarope"],
-    "requirements": ["cryptography"]
+    "requirements": ["cryptography"],
+    "version": "1.0.0"
   }
