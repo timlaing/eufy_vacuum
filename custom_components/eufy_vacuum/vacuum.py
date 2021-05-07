@@ -50,7 +50,7 @@ def setup_platform(hass, config, add_entities, device_config=None):
     add_entities([EufyVacuum(device_config)], True)
 
 
-class EufyVacuum(VacuumDevice):
+class EufyVacuum(VacuumEntity):
     """Representation of a Eufy vacuum cleaner."""
 
     def __init__(self, device_config):
