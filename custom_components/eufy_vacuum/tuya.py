@@ -574,7 +574,6 @@ class TuyaDevice:
             self.writer.write(message.bytes())
         except (socket.timeout, socket.error, OSError) as e:
             if retries == 0:
-                raise ConnectionException("Failed to send data to {}".format(
-                    self)) from e
+                raise ConnectionException("Failed to send data to {}".format(self)) from e
             await self.async_connect()
-            await self.async_send(message, retries=retries - 1)
+            await self._async_send(message, retries=retries - 1)
