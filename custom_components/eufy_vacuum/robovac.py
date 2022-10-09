@@ -15,10 +15,10 @@
 # limitations under the License.
 
 import logging
+from enum import IntEnum
 
 from .property import DeviceProperty, StringEnum
 from .tuya import TuyaDevice
-
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -72,6 +72,18 @@ class ErrorCode(StringEnum):
     S_BRUSH_STUCK = 'S_brush_stuck'
 
 
+class ErrorCodeT2251(IntEnum):
+    NO_ERROR = 0
+    WHEEL_STUCK = 1
+    R_BRUSH_STUCK = 2
+    CRASH_BAR_STUCK = 3
+    SENSOR_DIRTY = 4
+    NOT_ENOUGH_POWER = 5
+    STUCK_5_MIN = 6
+    FAN_STUCK = 7
+    S_BRUSH_STUCK = 8
+
+
 class Robovac(TuyaDevice):
     """Represents a generic Eufy Robovac."""
 
@@ -95,7 +107,12 @@ class Robovac(TuyaDevice):
     clean_speed = DeviceProperty(CLEAN_SPEED, CleanSpeed)
     find_robot = DeviceProperty(FIND_ROBOT)
     battery_level = DeviceProperty(BATTERY_LEVEL, read_only=True)
-    error_code = DeviceProperty(ERROR_CODE, ErrorCode, True)
+
+    def __init__(self, *args, error_code_type):
+        super(Robovac, self).__init__(*args)
+        error_code = DeviceProperty(self.ERROR_CODE, error_code_type, True)
+        Robovac.error_code = error_code
+        # error_code.__set_name__(Robovac, 'error_code')
 
     async def async_play(self, callback=None):
         await self.async_set({self.PLAY_PAUSE: True}, callback)

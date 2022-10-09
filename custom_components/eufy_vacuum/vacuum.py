@@ -34,11 +34,22 @@ SUPPORT_ROBOVAC_T2118 = (
     SUPPORT_TURN_OFF | SUPPORT_TURN_ON
 )
 
+SUPPORT_ROBOVAC_T2251 = (
+    SUPPORT_BATTERY | SUPPORT_CLEAN_SPOT | SUPPORT_FAN_SPEED | SUPPORT_LOCATE |
+    SUPPORT_PAUSE | SUPPORT_RETURN_HOME | SUPPORT_START | SUPPORT_STATUS |
+    SUPPORT_TURN_OFF | SUPPORT_TURN_ON
+)
 
 MODEL_CONFIG = {
     'T2118': {
         'fan_speeds': FAN_SPEEDS,
-        'support': SUPPORT_ROBOVAC_T2118
+        'support': SUPPORT_ROBOVAC_T2118,
+        'error_code': robovac.ErrorCode
+    },
+    'T2251': {
+        'fan_speeds': FAN_SPEEDS,
+        'support': SUPPORT_ROBOVAC_T2251,
+        'error_code': robovac.ErrorCodeT2251
     }
 }
 
@@ -67,7 +78,7 @@ class EufyVacuum(VacuumEntity):
         self._device_id = device_config['device_id']
         self.robovac = robovac.Robovac(
             device_config['device_id'], device_config['address'],
-            device_config['local_key'])
+            device_config['local_key'], error_code_type=device_config['error_code'])
         self._name = device_config['name']
 
     async def async_update(self):
