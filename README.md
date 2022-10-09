@@ -1,13 +1,13 @@
 # Eufy Robovac control for Python
 
-Work in progress! This is a fork of a fork. 
+Work in progress! This is a fork of a fork of a fork. 
 
 ## Installation
 Pre-requisites:
 * openssl (used for encryption)
 
 ```
-git clone https://github.com/pbulteel/eufy_robovac.git
+git clone https://github.com/timlaing/eufy_robovac.git
 cd eufy_robovac
 python3 -m venv .
 bin/pip install -e .
