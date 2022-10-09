@@ -78,7 +78,8 @@ class EufyVacuum(VacuumEntity):
         self._device_id = device_config['device_id']
         self.robovac = robovac.Robovac(
             device_config['device_id'], device_config['address'],
-            device_config['local_key'], error_code_type=device_config['error_code'])
+            device_config['local_key'], 
+            error_code_type=self._config['error_code'])
         self._name = device_config['name']
 
     async def async_update(self):
